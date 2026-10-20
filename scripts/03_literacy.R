@@ -59,6 +59,16 @@ wide <- data.frame(
   women_rate = sprintf("%.1f", women$rate))
 print(wide, row.names = FALSE)
 
+# Save the tidy table (numeric, one decimal) so the Python table can be
+# compared with it by script.
+write.csv(data.frame(
+  band       = men$band,
+  men_n      = men$n,
+  men_rate   = round(men$rate, 1),
+  women_n    = women$n,
+  women_rate = round(women$rate, 1)),
+  "scripts/band_table_R.csv", row.names = FALSE)
+
 # --- The band with the largest gap between men and women ------------------
 gap_df    <- data.frame(band = men$band, men = men$rate, women = women$rate)
 gap_df$gap <- abs(gap_df$men - gap_df$women)

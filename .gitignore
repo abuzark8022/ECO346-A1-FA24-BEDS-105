@@ -1,0 +1,8 @@
+# R build artefacts / verification outputs
+scripts/band_table_R.csv
+scripts/band_table_python.csv
+figures/_preview_*.png
+*.Rproj.user/
+.Rhistory
+.RData
+.Rproj.user
