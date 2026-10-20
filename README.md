@@ -29,8 +29,9 @@ Individual scripts:
 | `scripts/02_distribution.R` | 2 | `figures/distribution.svg` |
 | `scripts/03_literacy.R` | 3 (redesign) | `figures/literacy.svg` + band table |
 | `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + band table |
+| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (rebuilds the slides) |
 
-Required R packages: `ggplot2`, `svglite`, `dplyr`. Required Python packages: `numpy`, `pandas`, `matplotlib`. All figures are written as **SVG** by the script that draws them.
+Required R packages: `ggplot2`, `svglite`, `dplyr`. Required Python packages: `numpy`, `pandas`, `matplotlib`; `build_slides.py` additionally uses `python-pptx` and `svglib`/`reportlab` to rasterise the PNG fallbacks. All figures are written as **SVG** by the script that draws them.
 
 The weighted *q*-th quantile follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q* (R's built-in `quantile()` is not used).
 
@@ -121,7 +122,8 @@ The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes
 ECO346-A1-FA24-BEDS-105/
 +-- README.md
 +-- data/       pslm_person_subset.csv, pslm_hh_subset.csv
-+-- scripts/    01_default.R, 02_distribution.R, 03_literacy.R, 04_literacy.py, run_all.R
++-- scripts/    01_default.R, 02_distribution.R, 03_literacy.R,
++               04_literacy.py, build_slides.py, run_all.R
 +-- figures/    default.svg, distribution.svg, literacy.svg, literacy_python.svg
 +-- slides/     FA24-BEDS-105.pptx
 ```
