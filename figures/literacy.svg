@@ -40,28 +40,28 @@
 <polyline points='575.23,330.98 575.23,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='67.11,90.62 118.43,67.10 169.76,92.60 221.08,78.18 272.41,71.38 323.73,85.47 375.06,103.30 426.38,136.63 477.71,166.71 529.03,156.06 580.36,160.93 ' style='stroke-width: 1.71; stroke: #2C7FB8; stroke-linecap: butt;' />
 <polyline points='67.11,123.04 118.43,129.22 169.76,187.67 221.08,186.69 272.41,199.65 323.73,179.41 375.06,239.70 426.38,230.98 477.71,278.76 529.03,278.61 580.36,269.58 ' style='stroke-width: 1.71; stroke: #D95F02; stroke-linecap: butt;' />
-<circle cx='67.11' cy='90.62' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='118.43' cy='67.10' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='169.76' cy='92.60' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='221.08' cy='78.18' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='272.41' cy='71.38' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='323.73' cy='85.47' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='375.06' cy='103.30' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='426.38' cy='136.63' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='477.71' cy='166.71' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='529.03' cy='156.06' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='580.36' cy='160.93' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #2C7FB8;' />
-<circle cx='67.11' cy='123.04' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='118.43' cy='129.22' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='169.76' cy='187.67' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='221.08' cy='186.69' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='272.41' cy='199.65' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='323.73' cy='179.41' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='375.06' cy='239.70' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='426.38' cy='230.98' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='477.71' cy='278.76' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='529.03' cy='278.61' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
-<circle cx='580.36' cy='269.58' r='3.52' style='stroke-width: 1.28; stroke: #333333; fill: #D95F02;' />
+<circle cx='67.11' cy='90.62' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='118.43' cy='67.10' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='169.76' cy='92.60' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='221.08' cy='78.18' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='272.41' cy='71.38' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='323.73' cy='85.47' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='375.06' cy='103.30' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='426.38' cy='136.63' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='477.71' cy='166.71' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='529.03' cy='156.06' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='580.36' cy='160.93' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='67.11' cy='123.04' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='118.43' cy='129.22' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='169.76' cy='187.67' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='221.08' cy='186.69' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='272.41' cy='199.65' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='323.73' cy='179.41' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='375.06' cy='239.70' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='426.38' cy='230.98' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='477.71' cy='278.76' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='529.03' cy='278.61' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='580.36' cy='269.58' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
 <text x='583.43' y='164.59' style='font-size: 10.24px; font-weight: bold;fill: #2C7FB8; font-family: "Arial";' textLength='20.47px' lengthAdjust='spacingAndGlyphs'>Men</text>
 <text x='585.87' y='273.24' style='font-size: 10.24px; font-weight: bold;fill: #D95F02; font-family: "Arial";' textLength='36.75px' lengthAdjust='spacingAndGlyphs'>Women</text>
 <line x1='375.06' y1='103.30' x2='375.06' y2='239.70' style='stroke-width: 1.28; stroke: #595959; stroke-linecap: butt;' />
@@ -79,7 +79,7 @@
 <text x='575.23' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>62</text>
 <text x='323.73' y='356.83' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='140.72px' lengthAdjust='spacingAndGlyphs'>Age band midpoint (years)</text>
 <text transform='translate(14.57,177.03) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='137.81px' lengthAdjust='spacingAndGlyphs'>Weighted literacy rate (%)</text>
-<text x='41.45' y='14.57' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='738.12px' lengthAdjust='spacingAndGlyphs'>Women in KP urban gain most of their literacy by their thirties; men start higher and stay ahead until the widest gap at ages 40-44</text>
+<text x='41.45' y='14.57' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='585.42px' lengthAdjust='spacingAndGlyphs'>Women's literacy falls sharply with age while men's stays high, peaking in a 47-point gap at ages 40-44</text>
 <text x='41.45' y='371.06' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='270.12px' lengthAdjust='spacingAndGlyphs'>Source: PSLM 2019-20 person and household files (course data repository).</text>
 <text x='41.45' y='379.70' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='431.05px' lengthAdjust='spacingAndGlyphs'>Sample: persons aged 10-64 with a non-missing literacy value in KP urban; weighted by the household weight (hhweight).</text>
 <text x='41.45' y='388.34' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='292.30px' lengthAdjust='spacingAndGlyphs'>Hollow markers mark thin cells: a band-sex group with fewer than 30 observations.</text>

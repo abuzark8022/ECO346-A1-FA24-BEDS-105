@@ -84,8 +84,8 @@ ends <- do.call(rbind, lapply(c("Men", "Women"), function(s) {
 }))
 
 title_txt <- sprintf(
-  "Women in KP urban gain most of their literacy by their thirties; men start higher and stay ahead until the widest gap at ages %s",
-  gap_band)
+  "Women's literacy falls sharply with age while men's stays high, peaking in a %d-point gap at ages %s",
+  round(gap_value), gap_band)
 caption_txt <- paste0(
   "Source: PSLM 2019-20 person and household files (course data repository).\n",
   "Sample: persons aged 10-64 with a non-missing literacy value in KP urban; ",
@@ -93,16 +93,16 @@ caption_txt <- paste0(
   "Hollow markers mark thin cells: a band-sex group with fewer than 30 observations.")
 
 # --- The figure -----------------------------------------------------------
-p <- ggplot(tab, aes(x = mid, y = rate, colour = sexf, linetype = thin)) +
+# Markers: filled for solid cells, hollow (white fill) for thin cells.
+# Lines are solid for both series; colour and the end labels carry the sex.
+tab$marker_fill <- ifelse(tab$thin, "white",
+                          ifelse(tab$sexf == "Men", "#2C7FB8", "#D95F02"))
+
+p <- ggplot(tab, aes(x = mid, y = rate, colour = sexf, group = sexf)) +
   geom_line(linewidth = 0.8, na.rm = TRUE) +
-  geom_point(aes(shape = thin, fill = sexf), size = 2.7, stroke = 0.9,
-             colour = "#333333", na.rm = TRUE) +
-  scale_shape_manual(values = c(`FALSE` = 21, `TRUE` = 21),
-                     guide = "none") +
-  scale_fill_manual(values = c(Men = "#2C7FB8", Women = "#D95F02"),
-                    guide = "none") +
-  scale_linetype_manual(values = c(`FALSE` = "solid", `TRUE` = "dotted"),
-                        guide = "none") +
+  geom_point(aes(fill = marker_fill, colour = sexf),
+             shape = 21, size = 3, stroke = 0.9, na.rm = TRUE) +
+  scale_fill_identity() +
   scale_colour_manual(values = c(Men = "#2C7FB8", Women = "#D95F02")) +
   geom_text(data = ends, aes(label = sexf, x = mid, y = rate),
             hjust = -0.15, vjust = 0.5, size = 3.6, fontface = "bold",

@@ -18,6 +18,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
+# Keep text as real <text> elements in the SVG (not embedded glyph paths), so
+# the file is readable and behaves like the R/svglite output.
+matplotlib.rcParams["svg.fonttype"] = "none"
+
 # Work from the repository root no matter where the script is called from.
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -115,8 +119,8 @@ ax.xaxis.set_major_locator(MultipleLocator(10))
 ax.set_xlabel("Age band midpoint (years)")
 ax.set_ylabel("Weighted literacy rate (%)")
 ax.set_title(
-    "Women in KP urban gain most of their literacy by their thirties; men "
-    "start higher and stay ahead until the widest gap at ages " + gap_band,
+    "Women's literacy falls sharply with age while men's stays high, "
+    f"peaking in a {gap_value:.0f}-point gap at ages {gap_band}",
     fontsize=10.5, fontweight="bold")
 fig.text(0.01, 0.005,
          "Source: PSLM 2019-20 person and household files (course data repository).\n"
