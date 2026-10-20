@@ -2,6 +2,7 @@
 scripts/band_table_R.csv
 scripts/band_table_python.csv
 figures/_preview_*.png
+figures/_*_slide.png
 *.Rproj.user/
 .Rhistory
 .RData
