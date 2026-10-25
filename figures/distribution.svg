@@ -102,7 +102,7 @@
 <text transform='translate(14.57,177.49) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='116.05px' lengthAdjust='spacingAndGlyphs'>Density per log10 unit</text>
 <text x='38.79' y='15.29' style='font-size: 13.00px; font-weight: bold; font-family: "Arial";' textLength='553.58px' lengthAdjust='spacingAndGlyphs'>Half of students' education spending is under Rs 9,500, but the top 10% exceed Rs 39,000</text>
 <text x='38.79' y='371.06' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='270.12px' lengthAdjust='spacingAndGlyphs'>Source: PSLM 2019-20 person and household files (course data repository).</text>
-<text x='38.79' y='379.70' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='481.75px' lengthAdjust='spacingAndGlyphs'>Sample: 1,061 students with annual education spending above zero in KP urban; 1 students outside Rs 100-Rs 1,000,000 are excluded.</text>
+<text x='38.79' y='379.70' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='471.95px' lengthAdjust='spacingAndGlyphs'>Sample: 1,061 students with annual education spending above zero in KP urban; 1 student outside Rs 100-Rs 1,000,000 is excluded.</text>
 <text x='38.79' y='388.34' style='font-size: 8.00px;fill: #4D4D4D; font-family: "Arial";' textLength='270.83px' lengthAdjust='spacingAndGlyphs'>Weighted by the household weight (hhweight). Bins are 0.1 log10 units wide.</text>
 </g>
 </g>

@@ -69,9 +69,11 @@ title_txt <- sprintf(
 caption_txt <- sprintf(
   paste0("Source: PSLM 2019-20 person and household files (course data repository).\n",
          "Sample: %s students with annual education spending above zero in KP urban; ",
-         "%s students outside Rs 100-Rs 1,000,000 are excluded.\n",
+         "%s %s outside Rs 100-Rs 1,000,000 %s excluded.\n",
          "Weighted by the household weight (hhweight). Bins are 0.1 log10 units wide."),
-  format(n_students, big.mark = ","), format(n_excluded, big.mark = ","))
+  format(n_students, big.mark = ","), format(n_excluded, big.mark = ","),
+  if (n_excluded == 1) "student" else "students",
+  if (n_excluded == 1) "is" else "are")
 
 ymax <- max(dens_df$density)
 

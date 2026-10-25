@@ -31,7 +31,7 @@ Individual scripts:
 | `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + band table |
 | `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (rebuilds the slides) |
 
-Required R packages: `ggplot2`, `svglite`, `dplyr`. Required Python packages: `numpy`, `pandas`, `matplotlib`; `build_slides.py` additionally uses `python-pptx` and `svglib`/`reportlab` to rasterise the PNG fallbacks. All figures are written as **SVG** by the script that draws them.
+Required R packages: `ggplot2`, `svglite`. Required Python packages: `numpy`, `pandas`, `matplotlib`; `build_slides.py` additionally uses `python-pptx` and `svglib`/`reportlab` to rasterise the PNG fallbacks. All figures are written as **SVG** by the script that draws them.
 
 The weighted *q*-th quantile follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q* (R's built-in `quantile()` is not used).
 
@@ -94,7 +94,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 | Men aged 55-59 | 58.8 % |
 | Band with the largest gap | **40-44** (47.4 points) |
 
-**Interpretation (<= 100 words).** Literacy rises with age for both sexes but the two series diverge sharply after the teenage years. Men are literate from early on (around 90% at 15-19) and stay high until middle age, while women's literacy collapses across the life course, from 68% at 15-19 to about 16% at 55-59. The widest gap is at ages 40-44, where men's rate (77.1%) exceeds women's (29.7%) by 47.4 points. This pattern is consistent with older cohorts of women having been excluded from schooling. The figure cannot tell us *why*: it shows no income, school supply, or cohort history, only an age profile.
+**Interpretation (<= 100 words).** Literacy declines with age for both sexes after the teenage years, but the two series diverge sharply. Men are literate from early on (around 90% at 15-19) and stay relatively high until middle age, while women's literacy collapses across the life course, from 68% at 15-19 to about 16% at 55-59. The widest gap is at ages 40-44, where men's rate (77.1%) exceeds women's (29.7%) by 47.4 points. This pattern is consistent with older cohorts of women having been excluded from schooling. The figure cannot tell us *why*: it shows no income, school supply, or cohort history, only an age profile.
 
 ---
 
@@ -102,7 +102,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 
 The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes(age, literate)) + geom_point()` with R's defaults untouched. The redesign is the Question 3 figure (`figures/literacy.svg`).
 
-**Explanation of the redesign (<= 150 words).** Three changes, each tied to a principle from Chapters 1-4. First, the raw scatter is replaced by **conditional means**: the weighted literacy rate within each five-year band, because averages reveal the age pattern that thousands of overlapping points hide (**overplotting**). Second, position is used for the rate and age while **line + shape channels** carry sex, since these encode quantitative and categorical information more accurately than the two-valued vertical position of a binary dot (**perceptual ranking of channels**). Third, the design strips non-data ink - no legend, direct end labels instead - and lets the series carry colour, raising the **data-ink ratio**. The default figure, however, shows the actual spread and the discreteness of the 0/1 outcome, which the redesign hides by plotting only one summary value per cell.
+**Explanation of the redesign (<= 150 words).** Three changes, each tied to a principle from Chapters 1-4. First, the raw scatter is replaced by **conditional means**: the weighted literacy rate within each five-year band, because averages reveal the age pattern that thousands of overlapping points hide (**overplotting**). Second, position is used for the rate and age while **colour and direct labels** carry sex, since these encode the categorical split more accurately than the two-valued vertical position of a binary dot (**perceptual ranking of channels**). Third, the design strips non-data ink - no legend, direct end labels instead - and lets the series carry colour, raising the **data-ink ratio**. The default figure, however, shows the actual spread and the discreteness of the 0/1 outcome, which the redesign hides by plotting only one summary value per cell.
 
 ---
 
@@ -112,7 +112,7 @@ The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes
 
 **Reported numbers.** The literacy rate of **women aged 15-19** is **68.1%** from R and **68.1%** from Python.
 
-**One difference and how it was fixed (<= 80 words).** The default axis range differed: R's `scale_y_continuous(limits = c(0, 100))` and matplotlib's automatic limits did not agree, so the two figures would not overlay. I set explicit `xlim(10, 65)` and `ylim(0, 100)` in Python to match the R plot. Marker style also differs by default, so hollow markers are drawn explicitly for thin cells in both languages.
+**One difference and how it was fixed (<= 80 words).** The default axis range and tick spacing differed: ggplot added expansion around the data, while matplotlib padded the axes its own way, so the two figures would not overlay. I fixed the same panel limits in both scripts - age 9-70 and rate 0-100 - and set the same breaks (age 12, 22, ..., 62; rate 0, 20, ..., 100). Hollow markers are also drawn explicitly for thin cells in both languages.
 
 ---
 

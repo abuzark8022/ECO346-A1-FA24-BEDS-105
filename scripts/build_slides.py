@@ -61,9 +61,13 @@ def add_svg_picture(slide, svg_path, left, top, width):
     """Insert an SVG picture with a PNG fallback, as PowerPoint does."""
     png_path = os.path.join(os.path.dirname(svg_path),
                             "_" + os.path.splitext(os.path.basename(svg_path))[0] + "_slide.png")
-    rasterise(svg_path, png_path)
+    try:
+        rasterise(svg_path, png_path)
+        pic = slide.shapes.add_picture(png_path, left, top, width=width)
+    finally:
+        if os.path.exists(png_path):
+            os.remove(png_path)
 
-    pic = slide.shapes.add_picture(png_path, left, top, width=width)
     blip = pic._element.blipFill.find("{%s}blip" % A)
 
     svg_rid = add_svg_image_part(slide, svg_path)

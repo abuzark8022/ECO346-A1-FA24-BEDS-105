@@ -26,7 +26,7 @@ lsamp <- subset(d, age >= 10 & age <= 64 & !is.na(literate))
 brk  <- seq(10, 65, by = 5)                       # 10,15,...,65
 lab  <- paste0(brk[-length(brk)], "-", brk[-1] - 1)
 band <- cut(lsamp$age, breaks = brk, right = FALSE, labels = lab)
-midpoints <- setNames(brk[-length(brk)] + 2.5, lab)   # midpoint: 12,17,...,62
+midpoints <- setNames(brk[-length(brk)] + 2, lab)     # midpoint: 12,17,...,62
 lsamp$band <- band
 lsamp$mid  <- midpoints[as.character(band)]
 lsamp$sexf <- factor(lsamp$sex, levels = c(1, 2), labels = c("Men", "Women"))
@@ -34,18 +34,18 @@ lsamp$sexf <- factor(lsamp$sex, levels = c(1, 2), labels = c("Men", "Women"))
 # --- Weighted literacy rate and count for each band x sex -----------------
 keys <- expand.grid(band = factor(lab, levels = lab), sexf = c("Men", "Women"))
 rows <- lapply(seq_len(nrow(keys)), function(i) {
-  g <- lsamp[lsamp$band == as.character(keys$band[i]) &
-             lsamp$sexf == keys$sexf[i], ]
+  b <- as.character(keys$band[i])
+  s <- keys$sexf[i]
+  g <- lsamp[lsamp$band == b & lsamp$sexf == s, ]
   data.frame(
-    band  = as.character(keys$band[i]),
-    mid   = if (nrow(g) > 0) g$mid[1] else NA,
-    sexf  = keys$sexf[i],
+    band  = b,
+    mid   = unname(midpoints[b]),
+    sexf  = s,
     n     = nrow(g),
     rate  = if (nrow(g) > 0) 100 * wmean(g$literate, g$hhweight) else NA)
 })
 tab <- do.call(rbind, rows)
 tab$thin <- tab$n < 30
-tab$mid[is.na(tab$mid)] <- brk[-length(brk)][is.na(tab$mid)] + 2.5
 
 # --- Print the full band table (n and weighted rate, by sex) --------------
 cat("\n================ QUESTION 3 BAND TABLE ================\n")
@@ -114,8 +114,10 @@ p <- ggplot(tab, aes(x = mid, y = rate, colour = sexf, group = sexf)) +
            label = sprintf("Largest gap at ages %s: %.1f points",
                            gap_band, gap_value),
            size = 3.3, colour = "grey20", fontface = "bold") +
-  scale_x_continuous(breaks = seq(12, 62, by = 10)) +
-  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0.02, 0.05))) +
+  scale_x_continuous(breaks = seq(12, 62, by = 10), limits = c(9, 70),
+                     expand = expansion(mult = c(0, 0))) +
+  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 20),
+                     expand = expansion(mult = c(0, 0))) +
   labs(
     title = title_txt,
     x = "Age band midpoint (years)",

@@ -16,7 +16,6 @@ import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
 
 # Keep text as real <text> elements in the SVG (not embedded glyph paths), so
 # the file is readable and behaves like the R/svglite output.
@@ -45,7 +44,7 @@ lsamp = d[(d["age"] >= 10) & (d["age"] <= 64) & d["literate"].notna()].copy()
 # --- Five-year age bands with midpoints 12, 17, ..., 62 -------------------
 edges = list(range(10, 66, 5))                 # 10,15,...,65
 labels = [f"{a}-{a + 4}" for a in edges[:-1]]  # '10-14', ..., '60-64'
-mids = {lab: a + 2.5 for lab, a in zip(labels, edges[:-1])}
+mids = {lab: a + 2 for lab, a in zip(labels, edges[:-1])}
 lsamp["band"] = pd.cut(lsamp["age"], bins=edges, right=False, labels=labels)
 lsamp["mid"] = lsamp["band"].map(mids).astype(float)
 lsamp["sexf"] = lsamp["sex"].map({1: "Men", 2: "Women"})
@@ -113,9 +112,10 @@ ax.annotate(f"Largest gap at ages {gap_band}:\n{gap_value:.1f} points",
             (gap_mid, max(gap_df["men"][gi], gap_df["women"][gi]) + 4),
             ha="center", color="#333333", fontweight="bold", fontsize=9)
 
-ax.set_xlim(10, 65)
+ax.set_xlim(9, 70)
 ax.set_ylim(0, 100)
-ax.xaxis.set_major_locator(MultipleLocator(10))
+ax.set_xticks(range(12, 63, 10))
+ax.set_yticks(range(0, 101, 20))
 ax.set_xlabel("Age band midpoint (years)")
 ax.set_ylabel("Weighted literacy rate (%)")
 ax.set_title(

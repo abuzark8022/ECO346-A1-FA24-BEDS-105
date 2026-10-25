@@ -27,56 +27,58 @@
 </defs>
 <g clip-path='url(#cpMC4wMHw2MTIuMDB8MC4wMHwzOTYuMDA=)'>
 <rect x='-0.000000000000064' y='0.00' width='612.00' height='396.00' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
-<polyline points='41.45,325.22 606.02,325.22 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='41.45,253.28 606.02,253.28 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='41.45,181.34 606.02,181.34 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='41.45,109.40 606.02,109.40 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='41.45,37.46 606.02,37.46 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='61.98,330.98 61.98,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='164.63,330.98 164.63,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='267.28,330.98 267.28,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='369.93,330.98 369.93,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='472.58,330.98 472.58,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='575.23,330.98 575.23,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='67.11,90.62 118.43,67.10 169.76,92.60 221.08,78.18 272.41,71.38 323.73,85.47 375.06,103.30 426.38,136.63 477.71,166.71 529.03,156.06 580.36,160.93 ' style='stroke-width: 1.71; stroke: #2C7FB8; stroke-linecap: butt;' />
-<polyline points='67.11,123.04 118.43,129.22 169.76,187.67 221.08,186.69 272.41,199.65 323.73,179.41 375.06,239.70 426.38,230.98 477.71,278.76 529.03,278.61 580.36,269.58 ' style='stroke-width: 1.71; stroke: #D95F02; stroke-linecap: butt;' />
-<circle cx='67.11' cy='90.62' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='118.43' cy='67.10' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='169.76' cy='92.60' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='221.08' cy='78.18' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='272.41' cy='71.38' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='323.73' cy='85.47' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='375.06' cy='103.30' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='426.38' cy='136.63' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='477.71' cy='166.71' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='529.03' cy='156.06' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='580.36' cy='160.93' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
-<circle cx='67.11' cy='123.04' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='118.43' cy='129.22' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='169.76' cy='187.67' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='221.08' cy='186.69' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='272.41' cy='199.65' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='323.73' cy='179.41' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='375.06' cy='239.70' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='426.38' cy='230.98' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='477.71' cy='278.76' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='529.03' cy='278.61' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<circle cx='580.36' cy='269.58' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
-<text x='583.43' y='164.59' style='font-size: 10.24px; font-weight: bold;fill: #2C7FB8; font-family: "Arial";' textLength='20.47px' lengthAdjust='spacingAndGlyphs'>Men</text>
-<text x='585.87' y='273.24' style='font-size: 10.24px; font-weight: bold;fill: #D95F02; font-family: "Arial";' textLength='36.75px' lengthAdjust='spacingAndGlyphs'>Women</text>
-<line x1='375.06' y1='103.30' x2='375.06' y2='239.70' style='stroke-width: 1.28; stroke: #595959; stroke-linecap: butt;' />
-<text x='375.06' y='95.15' text-anchor='middle' style='font-size: 9.39px; font-weight: bold;fill: #333333; font-family: "Arial";' textLength='169.52px' lengthAdjust='spacingAndGlyphs'>Largest gap at ages 40-44: 47.4 points</text>
-<text x='36.07' y='328.66' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='5.33px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='36.07' y='256.72' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>25</text>
-<text x='36.07' y='184.78' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>50</text>
-<text x='36.07' y='112.84' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>75</text>
-<text x='36.07' y='40.89' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='15.98px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text x='61.98' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>12</text>
-<text x='164.63' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>22</text>
-<text x='267.28' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>32</text>
-<text x='369.93' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>42</text>
-<text x='472.58' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>52</text>
-<text x='575.23' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>62</text>
+<polyline points='41.45,330.98 606.02,330.98 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='41.45,269.40 606.02,269.40 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='41.45,207.82 606.02,207.82 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='41.45,146.23 606.02,146.23 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='41.45,84.65 606.02,84.65 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='41.45,23.07 606.02,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='69.21,330.98 69.21,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='161.77,330.98 161.77,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='254.32,330.98 254.32,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='346.87,330.98 346.87,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='439.43,330.98 439.43,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='531.98,330.98 531.98,23.07 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='69.21,79.96 115.49,54.78 161.77,82.07 208.04,66.64 254.32,59.37 300.60,74.44 346.87,93.52 393.15,129.19 439.43,161.37 485.70,149.97 531.98,155.18 ' style='stroke-width: 1.71; stroke: #2C7FB8; stroke-linecap: butt;' />
+<polyline points='69.21,114.64 115.49,121.26 161.77,183.80 208.04,182.75 254.32,196.62 300.60,174.96 346.87,239.46 393.15,230.14 439.43,281.26 485.70,281.10 531.98,271.44 ' style='stroke-width: 1.71; stroke: #D95F02; stroke-linecap: butt;' />
+<circle cx='69.21' cy='79.96' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='115.49' cy='54.78' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='161.77' cy='82.07' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='208.04' cy='66.64' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='254.32' cy='59.37' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='300.60' cy='74.44' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='346.87' cy='93.52' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='393.15' cy='129.19' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='439.43' cy='161.37' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='485.70' cy='149.97' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='531.98' cy='155.18' r='3.84' style='stroke-width: 1.28; stroke: #2C7FB8; fill: #2C7FB8;' />
+<circle cx='69.21' cy='114.64' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='115.49' cy='121.26' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='161.77' cy='183.80' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='208.04' cy='182.75' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='254.32' cy='196.62' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='300.60' cy='174.96' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='346.87' cy='239.46' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='393.15' cy='230.14' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='439.43' cy='281.26' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='485.70' cy='281.10' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<circle cx='531.98' cy='271.44' r='3.84' style='stroke-width: 1.28; stroke: #D95F02; fill: #D95F02;' />
+<text x='535.05' y='158.84' style='font-size: 10.24px; font-weight: bold;fill: #2C7FB8; font-family: "Arial";' textLength='20.47px' lengthAdjust='spacingAndGlyphs'>Men</text>
+<text x='537.49' y='275.10' style='font-size: 10.24px; font-weight: bold;fill: #D95F02; font-family: "Arial";' textLength='36.75px' lengthAdjust='spacingAndGlyphs'>Women</text>
+<line x1='346.87' y1='93.52' x2='346.87' y2='239.46' style='stroke-width: 1.28; stroke: #595959; stroke-linecap: butt;' />
+<text x='346.87' y='84.56' text-anchor='middle' style='font-size: 9.39px; font-weight: bold;fill: #333333; font-family: "Arial";' textLength='169.52px' lengthAdjust='spacingAndGlyphs'>Largest gap at ages 40-44: 47.4 points</text>
+<text x='36.07' y='334.41' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='5.33px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='36.07' y='272.83' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='36.07' y='211.25' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text x='36.07' y='149.67' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text x='36.07' y='88.09' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>80</text>
+<text x='36.07' y='26.51' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='15.98px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='69.21' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>12</text>
+<text x='161.77' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>22</text>
+<text x='254.32' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>32</text>
+<text x='346.87' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>42</text>
+<text x='439.43' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>52</text>
+<text x='531.98' y='343.23' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>62</text>
 <text x='323.73' y='356.83' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='140.72px' lengthAdjust='spacingAndGlyphs'>Age band midpoint (years)</text>
 <text transform='translate(14.57,177.03) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='137.81px' lengthAdjust='spacingAndGlyphs'>Weighted literacy rate (%)</text>
 <text x='41.45' y='14.57' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='585.42px' lengthAdjust='spacingAndGlyphs'>Women's literacy falls sharply with age while men's stays high, peaking in a 47-point gap at ages 40-44</text>
