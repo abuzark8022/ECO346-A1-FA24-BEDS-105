@@ -123,22 +123,22 @@ add_title(s, "ECO346 Assignment 1 \u2014 Variant 5: KP urban")
 add_bullets(s, [
     ("Registration number", "FA24-BEDS-105"),
     ("Variant", "5 = Khyber Pakhtunkhwa, urban  (prov_code 1, urban_rural 2)"),
-    ("Data", "PSLM 2019-20 person and household files; all statistics weighted by hhweight"),
+    ("Data", "PSLM 2019-20 person and household files; Population estimates weighted by hhweight"),
     ("Deliverables", "Two figures in R, a makeover, and the band table reproduced in Python"),
 ], Inches(1.6), size=18)
 
 # ---------------------------------------------------------------- Slide 2 ---
 s = prs.slides.add_slide(blank)
 add_title(s, "The makeover: default (left) vs redesign (right)", size=22)
-add_svg_picture(s, "figures/default.svg", Inches(0.3), Inches(1.35), Inches(4.5))
-add_svg_picture(s, "figures/literacy.svg", Inches(5.2), Inches(1.15), Inches(4.5))
-cap = s.shapes.add_textbox(Inches(0.3), Inches(6.5), Inches(9.4), Inches(0.8))
+add_svg_picture(s, "figures/default.svg", Inches(0.35), Inches(1.35), Inches(4.5))
+add_svg_picture(s, "figures/literacy.svg", Inches(5.15), Inches(1.35), Inches(4.5))
+cap = s.shapes.add_textbox(Inches(0.6), Inches(4.95), Inches(8.8), Inches(1.2))
 cap.text_frame.word_wrap = True
 p = cap.text_frame.paragraphs[0]
-p.text = ("Default: raw literate-vs-age points, overplotted.  "
-          "Redesign: weighted literacy by age band, two series, direct labels, "
-          "no legend, thin cells hollow, widest gap annotated.")
-p.font.size = Pt(11); p.font.color.rgb = MUTED
+p.text = ("Default: raw literate-vs-age points, heavily overplotted.  "
+          "Redesign: weighted literacy by age band, two series, direct end labels, "
+          "no legend, thin cells hollow, widest gap directly annotated.")
+p.font.size = Pt(13); p.font.color.rgb = MUTED
 
 # ---------------------------------------------------------------- Slide 3 ---
 s = prs.slides.add_slide(blank)

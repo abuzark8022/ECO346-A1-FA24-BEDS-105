@@ -9,7 +9,7 @@
 | **Second language (Question 5)** | Python (pandas + matplotlib) |
 | **Data** | PSLM 2019-20 person and household files (subset), in `data/` |
 
-The variant is the last two digits of the registration number, `05`, taken modulo 8: `05 = 0 x 8 + 5`, so variant 5. Every figure and number below uses only persons and households in **KP urban**; every statistic is weighted by the household weight `hhweight`, attached from the household file by `hhid`.
+The variant is the last two digits of the registration number, `05`, taken modulo 8: `05 = 0 x 8 + 5`, so variant 5. Every figure and number below uses only persons and households in **KP urban**. Population estimates (means, quantiles, rates, densities) are weighted by the household weight `hhweight`, attached from the household file by `hhid`. Sample counts ($n$) and the unweighted median are reported unweighted to distinguish sample size from population estimates.
 
 ---
 
@@ -71,6 +71,8 @@ All figures are written as **SVG** by the script that draws them. The weighted *
 | Weighted 10th percentile | Rs 3,150 |
 | Weighted 90th percentile | Rs 39,000 |
 | Ratio of 90th to 10th percentile | 12.38 |
+| Mean survey weight below unweighted median | 268.7 |
+| Mean survey weight above unweighted median | 228.4 |
 
 **What it shows (<= 80 words).** Education spending is heavily right-skewed: the estimated population median is Rs 9,500, with the top tenth exceeding Rs 39,000 (12.38 times the 10th percentile of Rs 3,150). Weighting shifts the estimated center downward from the unweighted sample median of Rs 10,100 to the weighted population median of Rs 9,500 because students below the sample median have higher average survey weights (268.7 vs 228.4), reflecting higher population representation for lower-spending households.
 
@@ -110,7 +112,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 | Men aged 55-59 | 58.8 % |
 | Band with the largest gap | **40-44** (47.4 points) |
 
-**Interpretation (<= 100 words).** Literacy rates are lower among older age groups, particularly women. At ages 15–19, literacy is 68.1% for women and 89.7% for men. At ages 55–59, the rates are 16.2% and 58.8%, respectively. The largest gender gap is 47.4 percentage points at ages 40–44 (men 77.1% vs women 29.7%). These differences are consistent with generational inequalities in educational access, but because this cross-sectional snapshot compares different birth cohorts at a single point in time rather than following individuals over their lives, the figure cannot establish causes or separate aging from cohort effects.
+**Interpretation (<= 100 words).** Literacy rates differ across age groups and between men and women. The gender gap is particularly large in older age groups, reaching 47.4 percentage points at ages 40–44. Women's reported literacy rate is 68.1% at ages 15–19 and 16.2% at ages 55–59, while men's rates are 89.7% and 58.8%, respectively. The age profile is consistent with generational differences in educational access, but it cannot establish their causes or separate cohort effects from aging effects.
 
 ---
 

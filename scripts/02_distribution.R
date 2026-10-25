@@ -72,6 +72,11 @@ u_med   <- median(sp)
 w_mean  <- wmean(sp, w)
 ratio   <- w_p90 / w_p10
 
+# Average survey weights below vs above unweighted sample median
+# (explains why weighted median Rs 9,500 < unweighted median Rs 10,100)
+mean_w_below <- mean(w[sp < u_med])
+mean_w_above <- mean(w[sp > u_med])
+
 # --- Weighted density per log10 unit in each 0.1-wide bin -----------------
 breaks <- seq(2, 6, by = 0.1)
 mids   <- (breaks[-1] + breaks[-length(breaks)]) / 2
@@ -138,4 +143,6 @@ cat("Weighted mean                           : Rs", fmt_rs(w_mean), "\n")
 cat("Weighted 10th percentile                : Rs", fmt_rs(w_p10), "\n")
 cat("Weighted 90th percentile                : Rs", fmt_rs(w_p90), "\n")
 cat("Ratio P90 / P10 (2 decimals)            :", sprintf("%.2f", ratio), "\n")
+cat("Mean weight below unweighted median     :", sprintf("%.1f", mean_w_below), "\n")
+cat("Mean weight above unweighted median     :", sprintf("%.1f", mean_w_above), "\n")
 cat("====================================================\n")
