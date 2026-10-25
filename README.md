@@ -13,27 +13,43 @@ The variant is the last two digits of the registration number, `05`, taken modul
 
 ---
 
-## How to reproduce everything
+## Environment setup and package installation
 
-No internet connection and no manual step are required. From the repository root:
+Before running the scripts for the first time on a fresh machine or lab computer, install the required packages:
 
-```bash
-Rscript scripts/run_all.R          # runs scripts 01-03 in R, then 04 in Python
+```r
+# In R console / RStudio:
+install.packages(c("ggplot2", "svglite"))
 ```
 
-Individual scripts:
+```bash
+# In terminal / Command Prompt (Python):
+pip install numpy pandas matplotlib python-pptx svglib reportlab
+```
+
+---
+
+## How to reproduce everything
+
+No internet connection and no manual step are required. From the repository root, running the master runner reproduces every figure, table, automated verification test, and the PowerPoint slides:
+
+```bash
+Rscript scripts/run_all.R          # runs scripts 01-03 (R), 04 (Python), validates tables, and rebuilds slides
+```
+
+Individual scripts can also be executed independently in order:
 
 | Script | Question | Output |
 |---|---|---|
 | `scripts/01_default.R` | 4 (default) | `figures/default.svg` |
 | `scripts/02_distribution.R` | 2 | `figures/distribution.svg` |
-| `scripts/03_literacy.R` | 3 (redesign) | `figures/literacy.svg` + band table |
-| `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + band table |
-| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (rebuilds the slides) |
+| `scripts/03_literacy.R` | 3 (redesign) | `figures/literacy.svg` + `scripts/band_table_R.csv` |
+| `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + `scripts/band_table_python.csv` (automated test against R) |
+| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (rebuilds the 4-slide presentation) |
 
-Required R packages: `ggplot2`, `svglite`. Required Python packages: `numpy`, `pandas`, `matplotlib`; `build_slides.py` additionally uses `python-pptx` and `svglib`/`reportlab` to rasterise the PNG fallbacks. All figures are written as **SVG** by the script that draws them.
+Every script includes explicit data validation asserting that the household file contains unique `hhid` keys, the merge preserves person record counts, survey weights (`hhweight`) are strictly positive, and categorical variables (`sex`, `literate`) follow valid codings.
 
-The weighted *q*-th quantile follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q* (R's built-in `quantile()` is not used).
+All figures are written as **SVG** by the script that draws them. The weighted *q*-th quantile follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q* (R's built-in `quantile()` is not used).
 
 ---
 
@@ -56,7 +72,7 @@ The weighted *q*-th quantile follows the assignment definition exactly: sort by 
 | Weighted 90th percentile | Rs 39,000 |
 | Ratio of 90th to 10th percentile | 12.38 |
 
-**What it shows (<= 80 words).** Education spending is right-skewed even in logs: the median student costs about Rs 9,500 a year, but the top tenth exceeds Rs 39,000, more than twelve times the 10th percentile. The weighted median (Rs 9,500) is below the unweighted median (Rs 10,100) because households with lower spending receive larger weights, pulling the weighted centre down. The near-thousand-rupee gap is small, so the two samples are similar in shape.
+**What it shows (<= 80 words).** Education spending is heavily right-skewed: the estimated population median is Rs 9,500, with the top tenth exceeding Rs 39,000 (12.38 times the 10th percentile of Rs 3,150). Weighting shifts the estimated center downward from the unweighted sample median of Rs 10,100 to the weighted population median of Rs 9,500 because students below the sample median have higher average survey weights (268.7 vs 228.4), reflecting higher population representation for lower-spending households.
 
 ---
 
@@ -94,7 +110,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 | Men aged 55-59 | 58.8 % |
 | Band with the largest gap | **40-44** (47.4 points) |
 
-**Interpretation (<= 100 words).** Literacy declines with age for both sexes after the teenage years, but the two series diverge sharply. Men are literate from early on (around 90% at 15-19) and stay relatively high until middle age, while women's literacy collapses across the life course, from 68% at 15-19 to about 16% at 55-59. The widest gap is at ages 40-44, where men's rate (77.1%) exceeds women's (29.7%) by 47.4 points. This pattern is consistent with older cohorts of women having been excluded from schooling. The figure cannot tell us *why*: it shows no income, school supply, or cohort history, only an age profile.
+**Interpretation (<= 100 words).** Literacy rates are lower among older age groups, particularly women. At ages 15–19, literacy is 68.1% for women and 89.7% for men. At ages 55–59, the rates are 16.2% and 58.8%, respectively. The largest gender gap is 47.4 percentage points at ages 40–44 (men 77.1% vs women 29.7%). These differences are consistent with generational inequalities in educational access, but because this cross-sectional snapshot compares different birth cohorts at a single point in time rather than following individuals over their lives, the figure cannot establish causes or separate aging from cohort effects.
 
 ---
 
@@ -108,7 +124,7 @@ The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes
 
 ## Question 5 - A second language (Python)
 
-`scripts/04_literacy.py` recomputes the Question 3 band table and redraws the figure in Python, saved as `figures/literacy_python.svg`. The two band tables agree to one decimal place across all eleven bands.
+`scripts/04_literacy.py` recomputes the Question 3 band table, saves it to `scripts/band_table_python.csv`, and redraws the figure in Python, saved as `figures/literacy_python.svg`. An automated verification step asserts that the counts and all eleven age-band weighted literacy rates agree with R within rounding tolerance (also cross-checked automatically in `scripts/run_all.R`).
 
 **Reported numbers.** The literacy rate of **women aged 15-19** is **68.1%** from R and **68.1%** from Python.
 

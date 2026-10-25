@@ -7,7 +7,15 @@
 library(ggplot2)
 library(svglite)
 
-if (basename(getwd()) == "scripts") setwd("..")
+# --- Path resolution: ensure working directory is repository root ---------
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  if (basename(script_dir) == "scripts") setwd(dirname(script_dir))
+} else if (basename(getwd()) == "scripts") {
+  setwd("..")
+}
 
 # --- Helpers --------------------------------------------------------------
 wmean <- function(x, w) sum(w * x) / sum(w)
@@ -15,9 +23,21 @@ wmean <- function(x, w) sum(w * x) / sum(w)
 # --- Variant 5: Khyber Pakhtunkhwa, urban (prov_code 1, urban_rural 2) ----
 hh  <- read.csv("data/pslm_hh_subset.csv")
 per <- read.csv("data/pslm_person_subset.csv")
-d   <- merge(per, hh[, c("hhid", "hhweight", "prov_code", "urban_rural")],
-             by = "hhid")
-d   <- d[d$prov_code == 1 & d$urban_rural == 2, ]
+
+# Data validation checks
+stopifnot(
+  "Household file must have unique hhid" = length(unique(hh$hhid)) == nrow(hh),
+  "Household weights must be positive and non-missing" = all(!is.na(hh$hhweight) & hh$hhweight > 0)
+)
+
+d <- merge(per, hh[, c("hhid", "hhweight", "prov_code", "urban_rural")], by = "hhid")
+stopifnot(
+  "Merge must preserve person record count" = nrow(d) == nrow(per),
+  "Literate column values must be 0, 1, or NA" = all(is.na(d$literate) | d$literate %in% c(0, 1)),
+  "Sex column values must be 1 or 2" = all(d$sex %in% c(1, 2))
+)
+
+d <- d[d$prov_code == 1 & d$urban_rural == 2, ]
 
 # --- Literacy sample: persons aged 10-64 whose literate value is present ---
 lsamp <- subset(d, age >= 10 & age <= 64 & !is.na(literate))
@@ -84,7 +104,7 @@ ends <- do.call(rbind, lapply(c("Men", "Women"), function(s) {
 }))
 
 title_txt <- sprintf(
-  "Women's literacy falls sharply with age while men's stays high, peaking in a %d-point gap at ages %s",
+  "Literacy is markedly lower among older age groups, especially women, peaking in a %d-point gap at ages %s",
   round(gap_value), gap_band)
 caption_txt <- paste0(
   "Source: PSLM 2019-20 person and household files (course data repository).\n",

@@ -142,14 +142,14 @@ p.font.size = Pt(11); p.font.color.rgb = MUTED
 
 # ---------------------------------------------------------------- Slide 3 ---
 s = prs.slides.add_slide(blank)
-add_title(s, "Key finding: the literacy gap widens with age", size=24)
+add_title(s, "Key finding: large gender gap in literacy across older cohorts", size=22)
 add_bullets(s, [
-    ("Women fall from 68.1% (ages 15-19) to 16.2% (ages 55-59)",
-     "Men stay near 90% at 15-19 and 58.8% at 55-59"),
+    ("Women: 68.1% at ages 15-19 vs 16.2% at ages 55-59",
+     "Men: 89.7% at ages 15-19 vs 58.8% at ages 55-59"),
     ("Largest gap at ages 40-44: 47.4 percentage points",
      "Men 77.1% vs women 29.7%"),
     ("Interpretation",
-     "Consistent with older cohorts of women being excluded from schooling"),
+     "Cross-sectional data show generational inequalities; cannot establish causes or aging effects"),
 ], Inches(1.6), size=17)
 
 # ---------------------------------------------------------------- Slide 4 ---
@@ -158,8 +158,8 @@ add_title(s, "Education spending: skewed even in logs", size=24)
 add_bullets(s, [
     ("Weighted median Rs 9,500; weighted 90th percentile Rs 39,000",
      "Ratio of 90th to 10th percentile: 12.38"),
-    ("Weighted median below unweighted median (Rs 9,500 vs Rs 10,100)",
-     "Lower-spending households carry larger weights, pulling the weighted centre down"),
+    ("Weighting shifts median from Rs 10,100 (sample) to Rs 9,500 (population)",
+     "Lower-spending students have higher average survey weights (268.7 vs 228.4)"),
     ("Sample",
      "1,060 students analysed of 1,061 (1 excluded outside Rs 100-Rs 1,000,000)"),
 ], Inches(1.6), size=17)

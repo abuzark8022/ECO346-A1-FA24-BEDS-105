@@ -6,7 +6,15 @@
 library(ggplot2)
 library(svglite)
 
-if (basename(getwd()) == "scripts") setwd("..")
+# --- Path resolution: ensure working directory is repository root ---------
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  if (basename(script_dir) == "scripts") setwd(dirname(script_dir))
+} else if (basename(getwd()) == "scripts") {
+  setwd("..")
+}
 
 # --- Helpers --------------------------------------------------------------
 # Weighted mean: sum(w*x) / sum(w)
@@ -28,9 +36,20 @@ fmt_rs <- function(x) format(round(x), big.mark = ",", scientific = FALSE, trim 
 # --- Variant 5: Khyber Pakhtunkhwa, urban (prov_code 1, urban_rural 2) ----
 hh  <- read.csv("data/pslm_hh_subset.csv")
 per <- read.csv("data/pslm_person_subset.csv")
-d   <- merge(per, hh[, c("hhid", "hhweight", "prov_code", "urban_rural")],
-             by = "hhid")
-d   <- d[d$prov_code == 1 & d$urban_rural == 2, ]
+
+# Data validation checks
+stopifnot(
+  "Household file must have unique hhid" = length(unique(hh$hhid)) == nrow(hh),
+  "Household weights must be positive and non-missing" = all(!is.na(hh$hhweight) & hh$hhweight > 0)
+)
+
+d <- merge(per, hh[, c("hhid", "hhweight", "prov_code", "urban_rural")], by = "hhid")
+stopifnot(
+  "Merge must preserve person record count" = nrow(d) == nrow(per),
+  "Education spending must be numeric" = is.numeric(d$ed_total)
+)
+
+d <- d[d$prov_code == 1 & d$urban_rural == 2, ]
 
 # --- Students: annual education spending greater than zero -----------------
 students <- subset(d, ed_total > 0)

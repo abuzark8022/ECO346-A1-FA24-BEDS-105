@@ -34,8 +34,16 @@ def weighted_mean(x, w):
 # --- Variant 5: Khyber Pakhtunkhwa, urban (prov_code 1, urban_rural 2) -----
 hh = pd.read_csv("data/pslm_hh_subset.csv")
 per = pd.read_csv("data/pslm_person_subset.csv")
-d = per.merge(hh[["hhid", "hhweight", "prov_code", "urban_rural"]],
-              on="hhid", how="inner")
+
+# Data validation checks
+assert hh["hhid"].is_unique, "Household file must contain unique hhid records"
+assert (hh["hhweight"] > 0).all() and hh["hhweight"].notna().all(), "Household weights must be positive and non-missing"
+
+d = per.merge(hh[["hhid", "hhweight", "prov_code", "urban_rural"]], on="hhid", how="inner")
+assert len(d) == len(per), "Merge with household file altered person record count"
+assert d["literate"].dropna().isin([0, 1]).all(), "Literate column values must be 0, 1, or missing"
+assert d["sex"].isin([1, 2]).all(), "Sex column values must be 1 or 2"
+
 d = d[(d["prov_code"] == 1) & (d["urban_rural"] == 2)]
 
 # --- Literacy sample: persons aged 10-64 whose literate value is present ---
@@ -81,8 +89,15 @@ gap_band = gap_df["band"][gi]
 gap_value = gap_df["gap"][gi]
 gap_mid = float(mids[gap_band])
 
-# --- Save the tidy table for the R-vs-Python check ------------------------
-tab.to_csv("scripts/band_table_python.csv", index=False)
+# --- Save the band table for the automated R-vs-Python check -------------
+wide_py = pd.DataFrame({
+    "band": men["band"],
+    "men_n": men["n"],
+    "men_rate": men["rate"].round(1),
+    "women_n": women["n"],
+    "women_rate": women["rate"].round(1)
+})
+wide_py.to_csv("scripts/band_table_python.csv", index=False)
 
 # --- The figure (mirrors the R redesign) ----------------------------------
 fig, ax = plt.subplots(figsize=(8.5, 5.5))
@@ -119,7 +134,7 @@ ax.set_yticks(range(0, 101, 20))
 ax.set_xlabel("Age band midpoint (years)")
 ax.set_ylabel("Weighted literacy rate (%)")
 ax.set_title(
-    "Women's literacy falls sharply with age while men's stays high, "
+    "Literacy is markedly lower among older age groups, especially women, "
     f"peaking in a {gap_value:.0f}-point gap at ages {gap_band}",
     fontsize=10.5, fontweight="bold")
 fig.text(0.01, 0.005,
@@ -146,3 +161,27 @@ print(f"Men   55-59 weighted literacy rate      : {rate('55-59', 'Men'):.1f} %")
 print(f"Band with the largest gap               : {gap_band}")
 print(f"Largest gap (points)                    : {gap_value:.1f}")
 print("================================================================")
+
+# --- Automated verification: compare Python table against R table ---------
+r_table_path = "scripts/band_table_R.csv"
+if os.path.exists(r_table_path):
+    print("\n--- Running automated comparison: R vs Python band tables ---")
+    tab_r = pd.read_csv(r_table_path)
+    assert len(tab_r) == len(wide_py), (
+        f"Row count mismatch: R has {len(tab_r)} bands, Python has {len(wide_py)} bands"
+    )
+    assert list(tab_r["band"]) == list(wide_py["band"]), (
+        f"Band sequence mismatch: R={list(tab_r['band'])}, Python={list(wide_py['band'])}"
+    )
+    assert (tab_r["men_n"] == wide_py["men_n"]).all(), "Mismatch in men unweighted counts"
+    assert (tab_r["women_n"] == wide_py["women_n"]).all(), "Mismatch in women unweighted counts"
+
+    men_diff = (tab_r["men_rate"] - wide_py["men_rate"]).abs().max()
+    women_diff = (tab_r["women_rate"] - wide_py["women_rate"]).abs().max()
+
+    assert men_diff <= 0.05, f"Men literacy rate differs between R and Python by {men_diff:.2f}% (>0.05%)"
+    assert women_diff <= 0.05, f"Women literacy rate differs between R and Python by {women_diff:.2f}% (>0.05%)"
+
+    print(f"[PASS] Counts and all 11 age-band literacy rates match R within rounding tolerance (max diff: {max(men_diff, women_diff):.2f}%).")
+else:
+    print(f"\n[INFO] {r_table_path} not found. Run scripts/03_literacy.R first for automated verification.")
