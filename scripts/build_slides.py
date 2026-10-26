@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """build_slides.py -- Question 6.
 
-Builds slides/FA24-BEDS-105.pptx: at most four slides showing the variant, the
-makeover (default and redesign side by side), and the key findings.
+Builds slides/FA24-BEDS-105.pptx: three slides showing the variant, the
+makeover (default and redesign side by side), and the one main finding.
 
 Each figure is inserted as an SVG picture, exactly as PowerPoint does with
 Insert > Pictures > .svg: the slide stores the vector SVG and a PNG raster
@@ -119,7 +119,7 @@ blank = prs.slide_layouts[6]
 
 # ---------------------------------------------------------------- Slide 1 ---
 s = prs.slides.add_slide(blank)
-add_title(s, "ECO346 Assignment 1 \u2014 Variant 5: KP urban")
+add_title(s, "ECO346 Assignment 1 - Variant 5: KP urban")
 add_bullets(s, [
     ("Registration number", "FA24-BEDS-105"),
     ("Variant", "5 = Khyber Pakhtunkhwa, urban  (prov_code 1, urban_rural 2)"),
@@ -142,26 +142,14 @@ p.font.size = Pt(13); p.font.color.rgb = MUTED
 
 # ---------------------------------------------------------------- Slide 3 ---
 s = prs.slides.add_slide(blank)
-add_title(s, "Key finding: large gender gap in literacy across older cohorts", size=22)
+add_title(s, "Key finding: widest gender gap in literacy at ages 40-44", size=20)
 add_bullets(s, [
     ("Women: 68.1% at ages 15-19 vs 16.2% at ages 55-59",
      "Men: 89.7% at ages 15-19 vs 58.8% at ages 55-59"),
     ("Largest gap at ages 40-44: 47.4 percentage points",
-     "Men 77.1% vs women 29.7%"),
-    ("Interpretation",
-     "Cross-sectional data show generational inequalities; cannot establish causes or aging effects"),
-], Inches(1.6), size=17)
-
-# ---------------------------------------------------------------- Slide 4 ---
-s = prs.slides.add_slide(blank)
-add_title(s, "Education spending: skewed even in logs", size=24)
-add_bullets(s, [
-    ("Weighted median Rs 9,500; weighted 90th percentile Rs 39,000",
-     "Ratio of 90th to 10th percentile: 12.38"),
-    ("Weighting shifts median from Rs 10,100 (sample) to Rs 9,500 (population)",
-     "Lower-spending students have higher average survey weights (268.7 vs 228.4)"),
-    ("Sample",
-     "1,060 students analysed of 1,061 (1 excluded outside Rs 100-Rs 1,000,000)"),
+     "Men 77.1% vs women 29.7% \u2014 wider than at 55-59 (42.6 points)"),
+    ("What this cannot tell us",
+     "Causes of the gap, or whether it is a cohort effect or an aging effect"),
 ], Inches(1.6), size=17)
 
 os.makedirs("slides", exist_ok=True)

@@ -134,9 +134,9 @@ ax.set_yticks(range(0, 101, 20))
 ax.set_xlabel("Age band midpoint (years)")
 ax.set_ylabel("Weighted literacy rate (%)")
 ax.set_title(
-    "Literacy is markedly lower among older age groups, especially women, "
-    f"peaking in a {gap_value:.0f}-point gap at ages {gap_band}",
-    fontsize=10.5, fontweight="bold")
+    f"The gender gap in literacy is widest at ages {gap_band}: "
+    f"{gap_value:.1f} points",
+    fontsize=12, fontweight="bold")
 fig.text(0.01, 0.005,
          "Source: PSLM 2019-20 person and household files (course data repository).\n"
          "Sample: persons aged 10-64 with a non-missing literacy value in KP urban; "

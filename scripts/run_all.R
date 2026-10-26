@@ -1,8 +1,8 @@
-# run_all.R -- reproduces every figure, table, verification test, and slides from a fresh clone.
+# run_all.R -- reproduces every figure, table, and verification test from a fresh clone.
 #
-# Runs the numbered scripts in order, runs Python for Question 5, validates agreement,
-# and rebuilds the PowerPoint slides for Question 6.
-# No manual step and no internet connection are required.
+# Runs the numbered scripts in order, runs Python for Question 5, and validates
+# agreement of the band tables. Rebuilds the PowerPoint slides if the optional
+# packages are installed; a missing slide rebuild does not fail the run.
 #
 # Run from the repository root:  Rscript scripts/run_all.R
 
@@ -29,10 +29,22 @@ for (s in c("scripts/01_default.R",
   if (status != 0) stop("Script failed: ", s)
 }
 
-# --- Find Python executable (python or Windows py launcher) ---------------
-py <- Sys.which("python")
-if (!nzchar(py)) py <- Sys.which("py")
-if (!nzchar(py)) stop("Python not found on PATH")
+# --- Find a working Python (python, python3, or the Windows py launcher) --
+# Skip Windows Store stubs that exist on PATH but cannot actually run.
+find_python <- function() {
+  for (cmd in c("python", "python3", "py")) {
+    p <- unname(Sys.which(cmd))
+    if (!nzchar(p)) next
+    out <- suppressWarnings(
+      system2(p, c("-c", "print(1)"), stdout = TRUE, stderr = TRUE))
+    status <- attr(out, "status")
+    if ((is.null(status) || status == 0) && any(grepl("1", out, fixed = TRUE))) {
+      return(p)
+    }
+  }
+  stop("Python not found on PATH (tried python, python3, and py)")
+}
+py <- find_python()
 
 # --- Question 5: Python reproduction and automated comparison -------------
 cat("\n########## running scripts/04_literacy.py ##########\n")
@@ -54,11 +66,17 @@ stopifnot(
 )
 cat("[PASS] Automated cross-check: R and Python band tables are identical across all 11 bands.\n")
 
-# --- Question 6: Build PowerPoint slides ----------------------------------
+# --- Question 6: rebuild slides if the extra PowerPoint packages are present
+# Figures and numbers do not depend on python-pptx / svglib / reportlab.
 cat("\n########## rebuilding slides/FA24-BEDS-105.pptx ##########\n")
 status <- system2(py, "scripts/build_slides.py")
-if (status != 0) stop("Slide generation failed: scripts/build_slides.py")
+if (status != 0) {
+  cat("[WARN] Slide rebuild skipped. Figures and numbers already reproduced.\n")
+  cat("       Optional packages: python-pptx, svglib, reportlab, lxml.\n")
+} else {
+  cat("Slides rebuilt.\n")
+}
 
 cat("\n====================================================================\n")
-cat("SUCCESS: All figures, tables, verification checks, and slides rebuilt.\n")
+cat("SUCCESS: All figures, tables, and verification checks rebuilt.\n")
 cat("====================================================================\n")

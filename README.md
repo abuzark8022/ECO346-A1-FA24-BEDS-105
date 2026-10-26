@@ -23,19 +23,28 @@ install.packages(c("ggplot2", "svglite"))
 ```
 
 ```bash
-# In terminal / Command Prompt (Python):
-pip install numpy pandas matplotlib python-pptx svglib reportlab
+# In terminal / Command Prompt (Python). On Windows, use `py` if `python` is not on PATH:
+pip install numpy pandas matplotlib
+py -m pip install numpy pandas matplotlib
+```
+
+Rebuilding the PowerPoint file is optional (the `.pptx` is already in `slides/`). It needs extra packages:
+
+```bash
+pip install python-pptx svglib reportlab lxml
 ```
 
 ---
 
 ## How to reproduce everything
 
-No internet connection and no manual step are required. From the repository root, running the master runner reproduces every figure, table, automated verification test, and the PowerPoint slides:
+After the packages above are installed, no internet connection is required. From the repository root:
 
 ```bash
-Rscript scripts/run_all.R          # runs scripts 01-03 (R), 04 (Python), validates tables, and rebuilds slides
+Rscript scripts/run_all.R
 ```
+
+That runs scripts 01-03 (R) and 04 (Python), checks that the band tables agree, and rebuilds the slides if the optional PowerPoint packages are installed. Figures and numbers do not depend on those extra packages. On Windows, the runner looks for `python`, `python3`, then `py`.
 
 Individual scripts can also be executed independently in order:
 
@@ -45,11 +54,11 @@ Individual scripts can also be executed independently in order:
 | `scripts/02_distribution.R` | 2 | `figures/distribution.svg` |
 | `scripts/03_literacy.R` | 3 (redesign) | `figures/literacy.svg` + `scripts/band_table_R.csv` |
 | `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + `scripts/band_table_python.csv` (automated test against R) |
-| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (rebuilds the 4-slide presentation) |
+| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (optional rebuild of the 3-slide presentation) |
 
 Every script includes explicit data validation asserting that the household file contains unique `hhid` keys, the merge preserves person record counts, survey weights (`hhweight`) are strictly positive, and categorical variables (`sex`, `literate`) follow valid codings.
 
-All figures are written as **SVG** by the script that draws them. The weighted *q*-th quantile follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q* (R's built-in `quantile()` is not used).
+All figures are written as **SVG** by the script that draws them. Every quantile, including the unweighted median, follows the assignment definition exactly: sort by the variable, accumulate the weight share, and take the smallest value at which the cumulative share reaches or exceeds *q*. Equal weights are used for the unweighted median. R's built-in `quantile()` and `median()` are not used.
 
 ---
 
@@ -67,14 +76,14 @@ All figures are written as **SVG** by the script that draws them. The weighted *
 | Students analysed (Rs 100 - Rs 1,000,000) | 1,060 |
 | Students excluded (outside the range) | 1 |
 | Weighted median | Rs 9,500 |
-| Unweighted median | Rs 10,100 |
+| Unweighted median | Rs 10,000 |
 | Weighted 10th percentile | Rs 3,150 |
 | Weighted 90th percentile | Rs 39,000 |
 | Ratio of 90th to 10th percentile | 12.38 |
-| Mean survey weight below unweighted median | 268.7 |
+| Mean survey weight below unweighted median | 274.9 |
 | Mean survey weight above unweighted median | 228.4 |
 
-**What it shows (<= 80 words).** Education spending is heavily right-skewed: the estimated population median is Rs 9,500, with the top tenth exceeding Rs 39,000 (12.38 times the 10th percentile of Rs 3,150). Weighting shifts the estimated center downward from the unweighted sample median of Rs 10,100 to the weighted population median of Rs 9,500 because students below the sample median have higher average survey weights (268.7 vs 228.4), reflecting higher population representation for lower-spending households.
+**What it shows (<= 80 words).** Education spending is right-skewed: the weighted population median is Rs 9,500, and the top tenth exceed Rs 39,000 (12.38 times the 10th percentile of Rs 3,150). Weighting pulls the centre down from the unweighted sample median of Rs 10,000 because students below that median have higher average survey weights (274.9 vs 228.4), so lower-spending households represent more of the urban KP population.
 
 ---
 
@@ -112,7 +121,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 | Men aged 55-59 | 58.8 % |
 | Band with the largest gap | **40-44** (47.4 points) |
 
-**Interpretation (<= 100 words).** Literacy rates differ across age groups and between men and women. The gender gap is particularly large in older age groups, reaching 47.4 percentage points at ages 40–44. Women's reported literacy rate is 68.1% at ages 15–19 and 16.2% at ages 55–59, while men's rates are 89.7% and 58.8%, respectively. The age profile is consistent with generational differences in educational access, but it cannot establish their causes or separate cohort effects from aging effects.
+**Interpretation (<= 100 words).** Literacy is high among teenagers and lower in older bands, and men outpace women at every age. The gap is widest at ages 40-44 (47.4 points: men 77.1%, women 29.7%), not among the oldest adults. Women aged 15-19 have a literacy rate of 68.1% versus 16.2% at ages 55-59; men are at 89.7% and 58.8%. The pattern is consistent with later cohorts receiving more schooling, but a single cross-section cannot identify causes or separate cohort effects from aging.
 
 ---
 
@@ -120,7 +129,7 @@ No band-sex cell falls below 30 observations, so no marker is hollow in this var
 
 The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes(age, literate)) + geom_point()` with R's defaults untouched. The redesign is the Question 3 figure (`figures/literacy.svg`).
 
-**Explanation of the redesign (<= 150 words).** Three changes, each tied to a principle from Chapters 1-4. First, the raw scatter is replaced by **conditional means**: the weighted literacy rate within each five-year band, because averages reveal the age pattern that thousands of overlapping points hide (**overplotting**). Second, position is used for the rate and age while **colour and direct labels** carry sex, since these encode the categorical split more accurately than the two-valued vertical position of a binary dot (**perceptual ranking of channels**). Third, the design strips non-data ink - no legend, direct end labels instead - and lets the series carry colour, raising the **data-ink ratio**. The default figure, however, shows the actual spread and the discreteness of the 0/1 outcome, which the redesign hides by plotting only one summary value per cell.
+**Explanation of the redesign (<= 150 words).** Three changes, each tied to a principle from Chapters 1-4. First, the raw scatter is replaced by **conditional means**: the weighted literacy rate in each five-year band, so the age pattern is no longer hidden by thousands of overlapping 0/1 points (**overplotting**). Second, the redesign keeps **position**, the highest-ranked channel, for the two quantities that vary continuously - age and the literacy rate - and uses colour plus direct labels only for the categorical split by sex (**perceptual ranking of channels**). Third, the legend is dropped in favour of end labels, cutting non-data ink (**data-ink ratio**). The default figure still shows the actual spread and the discreteness of the 0/1 outcome, which the redesign hides by plotting one summary value per cell.
 
 ---
 
@@ -130,7 +139,7 @@ The default figure (`figures/default.svg`, committed first) is `ggplot(data, aes
 
 **Reported numbers.** The literacy rate of **women aged 15-19** is **68.1%** from R and **68.1%** from Python.
 
-**One difference and how it was fixed (<= 80 words).** The default axis range and tick spacing differed: ggplot added expansion around the data, while matplotlib padded the axes its own way, so the two figures would not overlay. I fixed the same panel limits in both scripts - age 9-70 and rate 0-100 - and set the same breaks (age 12, 22, ..., 62; rate 0, 20, ..., 100). Hollow markers are also drawn explicitly for thin cells in both languages.
+**One difference and how it was fixed (<= 80 words).** The default axis range and tick spacing differed: ggplot expanded the panel around the data, while matplotlib padded the axes differently, so the two figures would not overlay. I set the same limits in both scripts (age 9-70, rate 0-100) and the same breaks (age 12, 22, ..., 62; rate 0, 20, ..., 100).
 
 ---
 

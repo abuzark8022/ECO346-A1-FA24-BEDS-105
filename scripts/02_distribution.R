@@ -68,12 +68,13 @@ lx <- log10(sp)                   # log10(rupees)
 w_med   <- wquantile(sp, w, 0.50)
 w_p10   <- wquantile(sp, w, 0.10)
 w_p90   <- wquantile(sp, w, 0.90)
-u_med   <- median(sp)
+# Unweighted median uses the assignment quantile rule with equal weights
+# (R's median() averages two central values and would not match the key).
+u_med   <- wquantile(sp, rep(1, length(sp)), 0.50)
 w_mean  <- wmean(sp, w)
 ratio   <- w_p90 / w_p10
 
-# Average survey weights below vs above unweighted sample median
-# (explains why weighted median Rs 9,500 < unweighted median Rs 10,100)
+# Average survey weights below vs above the unweighted sample median
 mean_w_below <- mean(w[sp < u_med])
 mean_w_above <- mean(w[sp > u_med])
 
@@ -88,7 +89,7 @@ dens_df <- data.frame(mid = mids, density = density_log)
 
 # --- The figure -----------------------------------------------------------
 title_txt <- sprintf(
-  "Half of students' education spending is under Rs %s, but the top 10%% exceed Rs %s",
+  "Weighted median education spending is Rs %s; the top 10%% exceed Rs %s",
   fmt_rs(w_med), fmt_rs(w_p90))
 caption_txt <- sprintf(
   paste0("Source: PSLM 2019-20 person and household files (course data repository).\n",
@@ -126,8 +127,9 @@ p <- ggplot(dens_df, aes(x = mid, y = density)) +
   theme_minimal(base_size = 12) +
   theme(
     panel.grid.minor = element_blank(),
-    plot.title = element_text(face = "bold", size = 13),
-    plot.caption = element_text(hjust = 0, size = 8, colour = "grey30"))
+    plot.title = element_text(face = "bold", size = 12),
+    plot.caption = element_text(hjust = 0, size = 8, colour = "grey30"),
+    plot.margin = margin(10, 16, 10, 10))
 
 ggsave("figures/distribution.svg", plot = p, device = svglite,
        width = 8, height = 5.5)

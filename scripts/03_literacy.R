@@ -104,8 +104,8 @@ ends <- do.call(rbind, lapply(c("Men", "Women"), function(s) {
 }))
 
 title_txt <- sprintf(
-  "Literacy is markedly lower among older age groups, especially women, peaking in a %d-point gap at ages %s",
-  round(gap_value), gap_band)
+  "The gender gap in literacy is widest at ages %s: %.1f points",
+  gap_band, gap_value)
 caption_txt <- paste0(
   "Source: PSLM 2019-20 person and household files (course data repository).\n",
   "Sample: persons aged 10-64 with a non-missing literacy value in KP urban; ",
@@ -148,7 +148,8 @@ p <- ggplot(tab, aes(x = mid, y = rate, colour = sexf, group = sexf)) +
     legend.position = "none",
     panel.grid.minor = element_blank(),
     plot.title = element_text(face = "bold", size = 12),
-    plot.caption = element_text(hjust = 0, size = 8, colour = "grey30")) +
+    plot.caption = element_text(hjust = 0, size = 8, colour = "grey30"),
+    plot.margin = margin(10, 28, 10, 10)) +
   coord_cartesian(clip = "off")
 
 ggsave("figures/literacy.svg", plot = p, device = svglite,
