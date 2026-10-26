@@ -54,7 +54,7 @@ Individual scripts can also be executed independently in order:
 | `scripts/02_distribution.R` | 2 | `figures/distribution.svg` |
 | `scripts/03_literacy.R` | 3 (redesign) | `figures/literacy.svg` + `scripts/band_table_R.csv` |
 | `scripts/04_literacy.py` | 5 | `figures/literacy_python.svg` + `scripts/band_table_python.csv` (automated test against R) |
-| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (optional rebuild of the 3-slide presentation) |
+| `scripts/build_slides.py` | 6 | `slides/FA24-BEDS-105.pptx` (optional rebuild of the 4-slide presentation) |
 
 Every script includes explicit data validation asserting that the household file contains unique `hhid` keys, the merge preserves person record counts, survey weights (`hhweight`) are strictly positive, and categorical variables (`sex`, `literate`) follow valid codings.
 
